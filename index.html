@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAVINDO LEARNING SYSTEM - MPU</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a2e, #2d3561);
+    margin: 5% auto;
+    padding: 30px;
+    border: 2px solid #00e0ff;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 10px 50px rgba(0,224,255,0.5);
+    animation: slideDown 0.3s;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    color: #00e0ff;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #00e0ff;
+}
+
+.close {
+    color: #ff4444;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    color: #ff0000;
+    transform: scale(1.2);
+}
+
+.modal-btn {
+    background: #00e0ff;
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px 5px;
+    transition: 0.3s;
+    font-size: 1em;
+}
+
+.modal-btn:hover {
+    background: #00aaff;
+    transform: scale(1.05);
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px 30px;
+    background: linear-gradient(135deg, #000, #1a1a2e);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+header h1 {
+    font-size: 3em;
+    color: #00e0ff;
+    text-shadow: 0 0 20px rgba(0,224,255,0.5);
+    margin-bottom: 15px;
+}
+
+header h2 {
+    font-size: 1.8em;
+    color: #ffaa00;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #aaa;
+    margin: 5px 0;
+}
+
+.dosen-info {
+    background: rgba(0,224,255,0.1);
+    border: 2px solid #00e0ff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.dosen-info h3 {
+    color: #00e0ff;
+    margin-bottom: 10px;
+}
+
+.dosen-info p {
+    color: #fff;
+    font-size: 1.1em;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #aaa;
+    margin: 5px 0;
+}
+
+.dosen-info {
+    background: rgba(0,224,255,0.1);
+    border: 2px solid #00e0ff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.dosen-info h3 {
+    color: #00e0ff;
+    margin-bottom: 10px;
+}
+
+.dosen-info p {
+    color: #fff;
+    font-size: 1.1em;
+}
+
+/* MODAL POPUP STYLES */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a2e, #0f2027);
+    margin: 5% auto;
+    padding: 30px;
+    border: 3px solid #00e0ff;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 50px rgba(0,224,255,0.5);
+    animation: slideDown 0.3s;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    color: #00e0ff;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-body {
+    color: #fff;
+    line-height: 1.8;
+}
+
+.modal-body ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.modal-body li {
+    margin: 8px 0;
+}
+
+.close {
+    color: #ff4444;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    line-height: 20px;
+}
+
+.close:hover {
+    color: #ff0000;
+    transform: scale(1.2);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1em;
+}
+
+.btn-open {
+    background: #00e0ff;
+    color: #000;
+}
+
+.btn-open:hover {
+    background: #00aaff;
+    transform: scale(1.05);
+}
+
+.btn-cancel {
+    background: #666;
+    color: #fff;
+}
+
+.btn-cancel:hover {
+    background: #888;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.intro {
+    background: rgba(31,31,31,0.9);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border-left: 5px solid #00e0ff;
+}
+
+.intro h3 {
+    color: #00e0ff;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.module-card {
+    background: rgba(31,31,31,0.95);
+    border-radius: 15px;
+    padding: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #00e0ff, #00aaff);
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    border-color: #00e0ff;
+    box-shadow: 0 10px 30px rgba(0,224,255,0.3);
+}
+
+.module-card h4 {
+    color: #00e0ff;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.module-card .week {
+    color: #ffaa00;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.module-card p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.module-card .topics {
+    color: #66ff66;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.module-card button {
+    background: #00e0ff;
+    border: none;
+    padding: 12px 25px;
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.module-card button:hover {
+    background: #00aaff;
+    transform: scale(1.02);
+}
+
+.module-card button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.module-1 { border-top: 5px solid #00e0ff; }
+.module-2 { border-top: 5px solid #ff00ff; }
+.module-3 { border-top: 5px solid #00d4ff; }
+.module-4 { border-top: 5px solid #ffaa00; }
+
+footer {
+    background: #000;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+footer p {
+    color: #aaa;
+    margin: 10px 0;
+}
+
+footer a {
+    color: #00e0ff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚢 RAVINDO LEARNING SYSTEM 🚢</h1>
+    <h2>Marine Power Unit (MPU)</h2>
+    <p>Teknika Semester 1 | Poltekpel & UHT</p>
+    
+    <div class="dosen-info">
+        <h3>👨‍🏫 Dosen Pengampu</h3>
+        <p><strong>Rafael Sukirno, C.E.</strong></p>
+        <p style="font-size:0.9em; color:#aaa;">Marine Engineering Department</p>
+    </div>
+</header>
+
+<div class="container">
+    
+    <div class="intro">
+        <h3>📚 Tentang Mata Kuliah</h3>
+        <p>
+            <strong>Marine Power Unit (MPU)</strong> adalah mata kuliah fundamental dalam marine engineering yang mempelajari sistem propulsi kapal, khususnya marine diesel engine, steam turbine, dan gas turbine. 
+        </p>
+        <p style="margin-top:15px;">
+            Mata kuliah ini dirancang untuk membekali taruna dengan pengetahuan teoritis dan praktis yang dibutuhkan untuk beroperasi dan memelihara sistem power plant di kapal.
+        </p>
+    </div>
+
+    <h3 style="color:#00e0ff; font-size:1.8em; margin-bottom:20px; text-align:center;">
+        📖 Modul Pembelajaran
+    </h3>
+
+    <div class="module-grid">
+        
+        <!-- Module 1 -->
+        <div class="module-card module-1">
+            <h4>🔥 Heat Engine Cycle</h4>
+            <div class="week">Minggu 1-2</div>
+            <p>Memahami prinsip dasar termodinamika dan siklus mesin kalor sebagai fondasi untuk mempelajari marine engine.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Hukum Termodinamika, Siklus Carnot, Efisiensi Termal, Aplikasi Marine
+            </div>
+            <button onclick="showPreview('module1')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+         
+        <!-- Module 2 -->
+        <div class="module-card module-2">
+            <h4>⚡ Ideal Gas Cycle</h4>
+            <div class="week">Minggu 3</div>
+            <p>Mempelajari siklus ideal untuk berbagai tipe internal combustion engine yang digunakan di marine industry.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Otto Cycle, Diesel Cycle, Dual Cycle, Brayton Cycle, Perbandingan Efisiensi
+            </div>
+            <button onclick="showPreview('module2')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="module-card module-3">
+            <h4>🚢 Marine Diesel Engine</h4>
+            <div class="week">Minggu 4-6</div>
+            <p>Studi mendalam tentang 2-stroke dan 4-stroke marine diesel engine dengan fokus pada operasi dan maintenance praktis.</p>
+            <div class="topics">
+                <strong>Topik:</strong> 2-Stroke/4-Stroke, Komponen, Sistem Bantu, Operasi, Maintenance, Troubleshooting + 5 Tugas Praktis
+            </div>
+            <button onclick="showPreview('module3')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="module-card module-4" style="border-top: 5px solid #4a90e2;">
+            <h4>🏗️ Basic Construction & Engine Room Layout</h4>
+            <div class="week">Minggu 4</div>
+            <p>Konstruksi dasar kapal, engine room arrangement, dan ship systems integration.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Hull Structure, ER Layout, Systems, Safety, SOLAS, MARPOL
+            </div>
+            <button onclick="showPreview('module4')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="module-card" style="border-top: 5px solid #9d6cff;">
+            <h4>📖 Midterm Review & Assessment</h4>
+            <div class="week">Minggu 5</div>
+            <p>Review komprehensif materi Minggu 1-4, latihan soal, dan persiapan UTS dengan popup interaktif.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Ringkasan Materi, Latihan Soal, Tips Ujian, Resources
+            </div>
+            <button onclick="showPreview('module5')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="module-card" style="border-top: 5px solid #20a0ff;">
+            <h4>💨 Steam Turbine & Rankine Cycle</h4>
+            <div class="week">Minggu 6</div>
+            <p>Prinsip kerja Rankine Cycle, steam turbine construction, efisiensi, dan aplikasi marine.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Rankine Cycle, Impulse/Reaction Turbine, Efficiency Improvements, LNG Applications
+            </div>
+            <button onclick="showPreview('module6')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 7 -->
+        <div class="module-card" style="border-top: 5px solid #ff8c42;">
+            <h4>🔥 Combustion & Fuel Systems</h4>
+            <div class="week">Minggu 7</div>
+            <p>Proses pembakaran, jenis marine fuel oil, fuel oil system, injection system, dan fuel treatment.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Combustion Process, Fuel Properties, Purification, Injection Timing, SFOC
+            </div>
+            <button onclick="showPreview('module7')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 8 -->
+        <div class="module-card" style="border-top: 5px solid #05bfdb;">
+            <h4>💧 Cooling & Lubrication Systems</h4>
+            <div class="week">Minggu 8</div>
+            <p>Sistem pendinginan (HT/LT circuits), sistem pelumasan, lube oil analysis, maintenance.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Cooling Water Circuits, Central Cooling, Lube Oil Properties, TBN/TAN
+            </div>
+            <button onclick="showPreview('module8')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 9 -->
+        <div class="module-card" style="border-top: 5px solid #8b5cf6;">
+            <h4>🌀 Starting Air & Control Systems</h4>
+            <div class="week">Minggu 9</div>
+            <p>Starting air system, control & monitoring systems, automation dalam marine engine.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Air Compressor, Starting Valves, Control Systems, Safety Interlocks
+            </div>
+            <button onclick="showPreview('module9')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 10 -->
+        <div class="module-card" style="border-top: 5px solid #ec4899;">
+            <h4>⚙️ Shafting & Propeller Systems</h4>
+            <div class="week">Minggu 10</div>
+            <p>Propulsion shafting, thrust bearing, stern tube, propeller design dan cavitation.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Shaft Alignment, Thrust Bearing, Stern Tube Sealing, Propeller Types
+            </div>
+            <button onclick="showPreview('module10')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 11 -->
+        <div class="module-card" style="border-top: 5px solid #f59e0b;">
+            <h4>🔧 Auxiliary Machinery & Systems</h4>
+            <div class="week">Minggu 11</div>
+            <p>Auxiliary generators, air compressors, pumps, separators, dan auxiliary boilers.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Generators, Compressors, Pumps, Purifiers, Aux Boilers
+            </div>
+            <button onclick="showPreview('module11')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 12 -->
+        <div class="module-card" style="border-top: 5px solid #10b981;">
+            <h4>🌍 Environmental Protection & Emissions</h4>
+            <div class="week">Minggu 12</div>
+            <p>MARPOL regulations, emission control technologies (SCR, EGR, Scrubber), ballast water treatment.</p>
+            <div class="topics">
+                <strong>Topik:</strong> NOx/SOx Control, Scrubbers, ECA Zones, Ballast Water Management
+            </div>
+            <button onclick="showPreview('module12')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 13 -->
+        <div class="module-card" style="border-top: 5px solid #6366f1;">
+            <h4>⚡ Alternative & Future Propulsion</h4>
+            <div class="week">Minggu 13</div>
+            <p>LNG fuel, hybrid propulsion, electric propulsion, hydrogen & ammonia sebagai marine fuel masa depan.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Dual-Fuel Engines, LNG, Electric Propulsion, Hydrogen, Battery Systems
+            </div>
+            <button onclick="showPreview('module13')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 14 -->
+        <div class="module-card" style="border-top: 5px solid #ef4444;">
+            <h4>🔥 Emergency Procedures & Safety</h4>
+            <div class="week">Minggu 14</div>
+            <p>Emergency procedures, fire fighting, abandon ship, damage control, dan ISM Code implementation.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Emergency Response, Fire Fighting, Damage Control, ISM Code, SMS
+            </div>
+            <button onclick="showPreview('module14')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 15 -->
+        <div class="module-card" style="border-top: 5px solid #06b6d4;">
+            <h4>📊 Final Review & Preparation</h4>
+            <div class="week">Minggu 15</div>
+            <p>Comprehensive review seluruh materi semester, latihan soal UAS, dan case studies.</p>
+            <div class="topics">
+                <strong>Topik:</strong> Comprehensive Review, Practice Exams, Case Studies, Q&A Session
+            </div>
+            <button onclick="showPreview('module15')">
+                👁️ Preview & Buka Modul →
+            </button>
+        </div>
+
+        <!-- Module 16 -->
+        <div class="module-card" style="border-top: 5px solid #a855f7; opacity: 0.95;">
+            <h4>📝 Final Examination (UAS)</h4>
+            <div class="week">Minggu 16</div>
+            <p>Ujian Akhir Semester - Comprehensive assessment covering all topics from Week 1-15.</p>
+            <div class="topics">
+                <strong>Format:</strong> Multiple Choice (40%), Essay (40%), Problem Solving (20%)
+            </div>
+            <button onclick="showPreview('module16')">
+                📋 Info UAS →
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p><strong>RAVINDO LEARNING SYSTEM</strong></p>
+    <p>Marine Power Unit | Teknika Semester 1</p>
+    <p style="margin-top:15px;">
+        <strong>Rafael Sukirno, C.E.</strong><br>
+        Dosen Pengampu MPU | Marine Engineering Department<br>
+        Politeknik Pelayaran & Universitas Hang Tuah
+    </p>
+    <p style="margin-top:20px;">
+        <a href="https://www.imo.org" target="_blank">IMO</a> |
+        <a href="https://www.iacs.org.uk" target="_blank">IACS</a> |
+        <a href="https://www.man-es.com" target="_blank">MAN Energy</a> |
+        <a href="https://www.wartsila.com" target="_blank">Wärtsilä</a>
+    </p>
+    <p style="margin-top:15px; font-size:0.85em; color:#666;">
+        © 2026 Rafael Sukirno, C.E. | All Rights Reserved
+    </p>
+</footer>
+
+<script>
+console.log("✓ RAVINDO Learning System - Main Page Loaded");
+console.log("📚 Available Modules: 3");
+console.log("👨‍🏫 Instructor: Rafael Sukirno, C.E.");
+</script>
+
+</div>
+
+<!-- MODAL POPUPS FOR EACH MODULE -->
+<div id="module1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module1')">&times;</span>
+        <h2 class="modal-header">🔥 Heat Engine Cycle</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 1-2 | 8 Sections</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>✅ Hukum Termodinamika I & II</li>
+                <li>✅ Siklus Carnot dan efisiensi maksimum</li>
+                <li>✅ Energy balance pada heat engine</li>
+                <li>✅ Aplikasi pada marine diesel engine</li>
+                <li>✅ Perhitungan efisiensi termal</li>
+                <li>✅ Interactive quiz dengan feedback</li>
+            </ul>
+            <p style="margin-top:15px; color:#66ff66;"><strong>📊 Output:</strong> Memahami dasar termodinamika sebagai fondasi MPU</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-open" onclick="window.location.href='minggu_01_heat_engine_cycle.html'">
+                Buka Modul
+            </button>
+            <button class="modal-btn btn-cancel" onclick="closePreview('module1')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module2')">&times;</span>
+        <h2 class="modal-header">⚡ Ideal Gas Cycle</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 3 | 8 Sections</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>✅ Otto Cycle (gasoline engine)</li>
+                <li>✅ Diesel Cycle (compression ignition)</li>
+                <li>✅ Dual Cycle (modern diesel)</li>
+                <li>✅ Brayton Cycle (gas turbine)</li>
+                <li>✅ Rumus efisiensi dan compression ratio</li>
+                <li>✅ P-V diagrams dan contoh soal</li>
+            </ul>
+            <p style="margin-top:15px; color:#66ff66;"><strong>📊 Output:</strong> Mampu menganalisis dan menghitung efisiensi berbagai siklus</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-open" onclick="window.location.href='minggu_02_ideal_gas_cycle.html'">
+                Buka Modul
+            </button>
+            <button class="modal-btn btn-cancel" onclick="closePreview('module2')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module3')">&times;</span>
+        <h2 class="modal-header">🚢 Marine Diesel Engine</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 4-6 | 10 Sections + 5 Tugas Praktis</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>✅ 2-Stroke vs 4-Stroke comparison lengkap</li>
+                <li>✅ Major components & functions</li>
+                <li>✅ Auxiliary systems (fuel, lube, cooling)</li>
+                <li>✅ Standard Operating Procedures (SOP)</li>
+                <li>✅ Maintenance & troubleshooting</li>
+                <li>✅ 5 Tugas praktis untuk taruna</li>
+            </ul>
+            <p style="margin-top:15px; color:#66ff66;"><strong>📊 Output:</strong> Mampu operate & maintain marine diesel engine</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-open" onclick="window.location.href='minggu_03-06_marine_diesel_engine.html'">
+                Buka Modul
+            </button>
+            <button class="modal-btn btn-cancel" onclick="closePreview('module3')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module4" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module4')">&times;</span>
+        <h2 class="modal-header">🏗️ Basic Construction & Engine Room Layout</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 4 | 7 Sections</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>✅ Ship dimensions & terminology (LOA, LBP, Draft, DWT)</li>
+                <li>✅ Hull structure & construction methods</li>
+                <li>✅ Engine room arrangement & layout design</li>
+                <li>✅ Ship systems integration</li>
+                <li>✅ SOLAS & MARPOL requirements</li>
+                <li>✅ Reading ship drawings (GA plan)</li>
+            </ul>
+            <p style="margin-top:15px; color:#66ff66;"><strong>📊 Output:</strong> Memahami konstruksi kapal & ER layout</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-open" onclick="window.location.href='minggu_04_basic_construction.html'">
+                Buka Modul
+            </button>
+            <button class="modal-btn btn-cancel" onclick="closePreview('module4')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module5" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module5')">&times;</span>
+        <h2 class="modal-header">📖 Midterm Review & Assessment</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 5 | UTS Preparation</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Konten:</h3>
+            <ul>
+                <li>✅ Ringkasan materi Minggu 1-4</li>
+                <li>✅ Latihan soal (Multiple Choice, Essay, Problem Solving)</li>
+                <li>✅ Tips & strategi menghadapi UTS</li>
+                <li>✅ Link resources internasional & nasional</li>
+                <li>✅ Info assessment lengkap</li>
+            </ul>
+            <p style="margin-top:15px; color:#66ff66;"><strong>📊 Bobot UTS:</strong> 30% dari nilai akhir</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-open" onclick="window.location.href='minggu_05_midterm_review.html'">
+                Buka Modul
+            </button>
+            <button class="modal-btn btn-cancel" onclick="closePreview('module5')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module6" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module6')">&times;</span>
+        <h2 class="modal-header">💨 Steam Turbine & Rankine Cycle</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 6 | Steam Power</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>✅ Rankine Cycle fundamentals</li>
+                <li>✅ Steam turbine construction (impulse & reaction)</li>
+                <li>✅ Efficiency improvements (reheat, regenerative)</li>
+                <li>✅ Marine applications (LNG carriers, nuclear vessels)</li>
+                <li>✅ Boiler systems & steam properties</li>
+            </ul>
+            <p style="margin-top:15px; color:#66ff66;"><strong>📊 Output:</strong> Memahami steam propulsion systems</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-open" onclick="window.location.href='minggu_06_steam_turbine.html'">
+                Buka Modul
+            </button>
+            <button class="modal-btn btn-cancel" onclick="closePreview('module6')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module7" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module7')">&times;</span>
+        <h2 class="modal-header">🔥 Combustion & Fuel Systems</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 7 | 6 Sections + Contoh Soal</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>✅ Combustion process & chemistry</li>
+                <li>✅ Marine fuel types (HFO, MDO, MGO)</li>
+                <li>✅ Fuel oil system dari tank ke injector</li>
+                <li>✅ Fuel injection systems (mechanical & electronic)</li>
+                <li>✅ Fuel treatment & changeover procedures</li>
+                <li>✅ SFOC calculation</li>
+            </ul>
+            <p style="margin-top:15px; color:#66ff66;"><strong>📊 Output:</strong> Mampu operate fuel oil system</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-open" onclick="window.location.href='minggu_07_combustion_fuel.html'">
+                Buka Modul
+            </button>
+            <button class="modal-btn btn-cancel" onclick="closePreview('module7')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module8" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module8')">&times;</span>
+        <h2 class="modal-header">💧 Cooling & Lubrication Systems</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 8 | 6 Sections</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>✅ Cooling water circuits (HT, LT, SW)</li>
+                <li>✅ Central cooling system concept</li>
+                <li>✅ Lubrication oil properties & distribution</li>
+                <li>✅ Oil analysis (TBN, TAN, wear metals)</li>
+                <li>✅ Maintenance procedures</li>
+                <li>✅ Troubleshooting common problems</li>
+            </ul>
+            <p style="margin-top:15px; color:#66ff66;"><strong>📊 Output:</strong> Mampu maintain cooling & lube systems</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-open" onclick="window.location.href='minggu_08_cooling_lubrication.html'">
+                Buka Modul
+            </button>
+            <button class="modal-btn btn-cancel" onclick="closePreview('module8')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module9" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module9')">&times;</span>
+        <h2 class="modal-header">🌀 Starting Air & Control Systems</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 9 | Coming Soon</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>📚 Starting air system components</li>
+                <li>📚 Air compressors & receivers</li>
+                <li>📚 Starting valves & distributors</li>
+                <li>📚 Control & monitoring systems</li>
+                <li>📚 Safety interlocks & automation</li>
+            </ul>
+            <p style="margin-top:15px; color:#ffaa00;"><strong>⏳ Status:</strong> Modul sedang dalam pengembangan</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closePreview('module9')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module10" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module10')">&times;</span>
+        <h2 class="modal-header">⚙️ Shafting & Propeller Systems</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 10 | Coming Soon</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>📚 Propulsion shafting components</li>
+                <li>📚 Shaft alignment procedures</li>
+                <li>📚 Thrust bearing & stern tube</li>
+                <li>📚 Propeller types & design</li>
+                <li>📚 Cavitation & vibration</li>
+            </ul>
+            <p style="margin-top:15px; color:#ffaa00;"><strong>⏳ Status:</strong> Modul sedang dalam pengembangan</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closePreview('module10')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module11" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module11')">&times;</span>
+        <h2 class="modal-header">🔧 Auxiliary Machinery & Systems</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 11 | Coming Soon</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>📚 Auxiliary diesel generators</li>
+                <li>📚 Air compressors & systems</li>
+                <li>📚 Pumps (centrifugal, positive displacement)</li>
+                <li>📚 Fuel & lube oil purifiers</li>
+                <li>📚 Auxiliary boilers</li>
+            </ul>
+            <p style="margin-top:15px; color:#ffaa00;"><strong>⏳ Status:</strong> Modul sedang dalam pengembangan</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closePreview('module11')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module12" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module12')">&times;</span>
+        <h2 class="modal-header">🌍 Environmental Protection & Emissions</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 12 | Coming Soon</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>📚 MARPOL Annex VI (NOx, SOx, CO₂)</li>
+                <li>📚 SCR & EGR systems</li>
+                <li>📚 Scrubber technology</li>
+                <li>📚 ECA zones compliance</li>
+                <li>📚 Ballast water management</li>
+            </ul>
+            <p style="margin-top:15px; color:#ffaa00;"><strong>⏳ Status:</strong> Modul sedang dalam pengembangan</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closePreview('module12')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module13" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module13')">&times;</span>
+        <h2 class="modal-header">⚡ Alternative & Future Propulsion</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 13 | Coming Soon</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>📚 Dual-fuel engines (LNG, methanol)</li>
+                <li>📚 Electric & hybrid propulsion</li>
+                <li>📚 Hydrogen fuel cells</li>
+                <li>📚 Ammonia as marine fuel</li>
+                <li>📚 Battery systems & shore power</li>
+            </ul>
+            <p style="margin-top:15px; color:#ffaa00;"><strong>⏳ Status:</strong> Modul sedang dalam pengembangan</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closePreview('module13')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module14" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module14')">&times;</span>
+        <h2 class="modal-header">🔥 Emergency Procedures & Safety</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 14 | Coming Soon</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Yang Akan Dipelajari:</h3>
+            <ul>
+                <li>📚 Emergency response procedures</li>
+                <li>📚 Fire fighting in engine room</li>
+                <li>📚 Damage control & flooding</li>
+                <li>📚 ISM Code & SMS implementation</li>
+                <li>📚 Risk assessment & safety culture</li>
+            </ul>
+            <p style="margin-top:15px; color:#ffaa00;"><strong>⏳ Status:</strong> Modul sedang dalam pengembangan</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closePreview('module14')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module15" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module15')">&times;</span>
+        <h2 class="modal-header">📊 Final Review & Preparation</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 15 | UAS Preparation</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Konten:</h3>
+            <ul>
+                <li>📚 Comprehensive review Week 1-14</li>
+                <li>📚 Practice exams (multiple choice & essay)</li>
+                <li>📚 Case studies analysis</li>
+                <li>📚 Q&A session dengan dosen</li>
+                <li>📚 Tips & strategies for final exam</li>
+            </ul>
+            <p style="margin-top:15px; color:#ffaa00;"><strong>⏳ Status:</strong> Modul sedang dalam pengembangan</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closePreview('module15')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="module16" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePreview('module16')">&times;</span>
+        <h2 class="modal-header">📝 Final Examination (UAS)</h2>
+        <div class="modal-body">
+            <p><strong>Minggu 16 | Ujian Akhir Semester</strong></p>
+            <h3 style="color:#ffaa00; margin-top:15px;">Format Ujian:</h3>
+            <ul>
+                <li>📋 <strong>Multiple Choice:</strong> 40% (50 soal)</li>
+                <li>✍️ <strong>Essay:</strong> 40% (5 soal)</li>
+                <li>🧮 <strong>Problem Solving:</strong> 20% (3 soal)</li>
+            </ul>
+            <p style="margin-top:15px;"><strong>Waktu:</strong> 150 menit (2.5 jam)</p>
+            <p><strong>Sifat:</strong> Closed book</p>
+            <p><strong>Bobot:</strong> 40% dari nilai akhir</p>
+            <p style="margin-top:15px; color:#ff4444;"><strong>⚠️ Cakupan:</strong> Seluruh materi Week 1-14 (comprehensive)</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closePreview('module16')">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+function showPreview(moduleId) {
+    document.getElementById(moduleId).style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closePreview(moduleId) {
+    document.getElementById(moduleId).style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+console.log("✓ RAVINDO Learning System Main Page Loaded");
+console.log("📚 Total Modules: 16 (8 available, 8 coming soon)");
+</script>
+
+</body>
+</html>
